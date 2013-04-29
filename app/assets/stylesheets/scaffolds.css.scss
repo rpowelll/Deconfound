@@ -47,14 +47,20 @@ hr {
 #content {
   width: 640px;
   margin: auto;
-  margin-top: 40px;
+  margin-top: 10px;
   padding: 20px;
   background: white;
   border: 1px solid #ddd;
 }
 
-#notice {
-  color: green;
+#flash_notice {
+  background: green;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 660px;
+  padding: 10px;
+  margin: auto;
 }
 
 .field_with_errors {
