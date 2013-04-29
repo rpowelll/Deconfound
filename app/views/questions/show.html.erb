@@ -12,13 +12,15 @@
 <hr>
 
 <% if @question.answers.count > 0 %>
+	<h2>Answers</h2>
 	<% @question.answers.each do |answer| %>
 		<p class="answer"><%= answer.body %></p>
+		<hr>
 	<% end -%>
 <% else %>
 	<p class="no-content">No one has answered this question yet</p>
+	<hr>
 <% end -%>
 
-<hr>
 
 <%= render partial: 'answers/form', locals: {answer: @new_answer, question: @question} %>
