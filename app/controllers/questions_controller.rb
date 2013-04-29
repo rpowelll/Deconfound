@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :require_login, except: [:show, :index]
+  before_action :verify_ownership, only: [:edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -73,5 +74,12 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:title, :body)
+    end
+
+    # Make sure the current user owns this question
+    def verify_ownership
+      unless @question.user == current_user
+        redirect_to @question, alert: "You do not have permission to do that"
+      end
     end
 end
