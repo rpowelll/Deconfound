@@ -6,6 +6,19 @@
   <%= @question.body %>
 </p>
 
-
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+
+<hr>
+
+<% if @question.answers.count > 0 %>
+	<% @question.answers.each do |answer| %>
+		<p class="answer"><%= answer.body %></p>
+	<% end -%>
+<% else %>
+	<p class="no-content">No one has answered this question yet</p>
+<% end -%>
+
+<hr>
+
+<%= render partial: 'answers/form', locals: {answer: @new_answer, question: @question} %>
