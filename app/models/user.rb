@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   validates :password, presence: true, confirmation: true
 
   has_many :questions
+  has_many :answers
 end
