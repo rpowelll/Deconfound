@@ -16,3 +16,5 @@ With Rails installed, simply run the following commands
 Any contributions to this project would be appreciated. You can comment on
 the [main repository's][mainrepo] issues page with any feature suggestions,
 feel free to fork this repo as well.
+
+[mainrepo]: https://github.com/CodeUOW/Deconfound
