@@ -35,6 +35,15 @@ div {
   }
 }
 
+hr {
+  border: none;
+  height: 1px;
+  background: #ddd;
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+}
+
 #content {
   width: 640px;
   margin: auto;
