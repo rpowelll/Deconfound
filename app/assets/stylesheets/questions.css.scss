@@ -1,3 +1,21 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+form.new_question, form.edit_question {
+	textarea {
+		border: 1px solid #ccc;
+		width: 618px;
+		height: 200px;
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	input[type=text] {
+		border: 1px solid #ccc;
+		width: 618px;
+		padding: 10px;
+		font-size: 18px;
+		font-weight: bold;
+	}
+}
