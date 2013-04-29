@@ -8,3 +8,12 @@
 	width: 660px;
 	margin: auto;
 }
+
+form#new_session {
+	input[type=text], input[type=password] {
+		border: 1px solid #ccc;
+		width: 318px;
+		padding: 10px;
+		font-size: 14px;
+	}
+}
