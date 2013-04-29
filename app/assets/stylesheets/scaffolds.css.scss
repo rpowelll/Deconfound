@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background-color: #eee;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -33,6 +33,15 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+#content {
+  width: 640px;
+  margin: auto;
+  margin-top: 40px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ddd;
 }
 
 #notice {
