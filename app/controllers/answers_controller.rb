@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :require_login, except: [:show, :index]
+  
   def create
     @question = Question.find(params[:question_id])
     @answer = Answer.new(answer_params)
