@@ -3,7 +3,7 @@
 <h1><%= @question.title %></h1>
 
 <p>
-  <%= @question.body %>
+  <%= markdown_format(@question.body) %>
 </p>
 
 <p><%= (@question.votes_count or 0).to_s + " vote".pluralize(@question.votes_count) %></p>
