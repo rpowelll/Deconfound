@@ -13,7 +13,11 @@ Deconfound::Application.routes.draw do
       patch 'vote'
     end
 
-    resources :answers
+    resources :answers do
+      member do
+        patch 'vote'
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
