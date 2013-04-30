@@ -5,7 +5,12 @@ Deconfound::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
   
-  resources :users
+  resources :users do
+    member do
+      get 'activate'
+    end
+  end
+
   resources :sessions
   
   resources :questions do
