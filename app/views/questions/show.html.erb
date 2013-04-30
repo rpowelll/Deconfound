@@ -6,10 +6,12 @@
   <%= @question.body %>
 </p>
 
+<p><%= @question.votes_count.to_s + " vote".pluralize(@question.votes_count) %></p>
 <p>Asked by <em><%= @question.user.username %></em> <%= time_ago_in_words(@question.created_at)%> ago</p>
 
 <% if current_user %>
 	<%= link_to 'Edit', edit_question_path(@question) %> |
+	<%= link_to 'Vote', vote_question_path(@question), method: :patch %> |
 <% end -%>
 
 <%= link_to 'Back', questions_path %>

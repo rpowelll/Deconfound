@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :vote]
   before_action :require_login, except: [:show, :index]
   before_action :verify_ownership, only: [:edit, :update, :destroy]
 
@@ -62,6 +62,18 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to questions_url }
       format.json { head :no_content }
+    end
+  end
+
+  def vote
+    @vote = Vote.new
+    @vote.votable = @question
+    @vote.user = current_user
+
+    if @vote.save
+      redirect_to @question, notice: "Thanks for voting!"
+    else
+      redirect_to @question, alert: "You've already voted for that, but thanks for your enthusiasm!"
     end
   end
 

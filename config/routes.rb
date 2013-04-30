@@ -9,6 +9,10 @@ Deconfound::Application.routes.draw do
   resources :sessions
   
   resources :questions do
+    member do
+      patch 'vote'
+    end
+
     resources :answers
   end
 
