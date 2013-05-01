@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130430044217) do
+ActiveRecord::Schema.define(version: 20130430232809) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
@@ -45,8 +45,12 @@ ActiveRecord::Schema.define(version: 20130430044217) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
+    t.string   "activation_state"
+    t.string   "activation_token"
+    t.datetime "activation_token_expires_at"
   end
 
+  add_index "users", ["activation_token"], name: "index_users_on_activation_token"
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
 
   create_table "votes", force: true do |t|
