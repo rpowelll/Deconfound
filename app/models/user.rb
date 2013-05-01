@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   validates :email,     presence: true,
                         uniqueness: true,
-                        format: { with: /[a-z]{2,3}\d{3}@uowmail\.edu\.au/, 
+                        format: { with: /[a-z]{2,3}\d{3}@(uowmail|uow)\.edu\.au/, 
                                   message: "We're only accepting UOW students for now" }
 
   validates :password,  presence: true,
