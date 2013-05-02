@@ -2,7 +2,9 @@
 
 <% if current_user %>
 	<%= link_to 'Edit', edit_question_path(@question) %> |
-	<%= link_to 'Vote', vote_question_path(@question), method: :patch %> |
+	<% unless current_user_has_voted_on?(@question) %>
+		<%= link_to 'Vote', vote_question_path(@question), method: :patch %> |
+	<% end -%>
 <% end -%>
 
 <%= link_to 'Back', questions_path %>
