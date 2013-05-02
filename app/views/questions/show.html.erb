@@ -20,13 +20,7 @@
 
 <% if @question.answers.count > 0 %>
 	<h2>Answers</h2>
-	<% @question.answers.each do |answer| %>
-		<p class="answer"><%= answer.body %></p>
-		<p>By <em><%= answer.user.username %></em> <%= time_ago_in_words(answer.created_at)%> ago</p>
-		<p><%= (answer.votes_count or 0).to_s + " vote".pluralize(answer.votes_count) %></p>
-		<%= link_to 'Vote', vote_question_answer_path(@question, answer), method: :patch %>
-		<hr>
-	<% end -%>
+	<%= render @question.answers %>
 <% else %>
 	<p class="no-content">No one has answered this question yet</p>
 	<hr>
