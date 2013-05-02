@@ -1,0 +1,8 @@
+<h1><%= @question.title %></h1>
+
+<p>
+  <%= markdown_format(@question.body) %>
+</p>
+
+<p><%= (@question.votes_count or 0).to_s + " vote".pluralize(@question.votes_count) %></p>
+<p>Asked by <em><%= @question.user.username %></em> <%= time_ago_in_words(@question.created_at)%> ago</p>
