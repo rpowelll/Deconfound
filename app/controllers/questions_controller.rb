@@ -32,6 +32,9 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        # Users automatically vote for their own questions
+        Vote.new(votable: @question, user: current_user).save
+
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render action: 'show', status: :created, location: @question }
       else
