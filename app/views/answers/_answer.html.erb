@@ -2,7 +2,7 @@
 <p>By <em><%= answer.user.username %></em> <%= time_ago_in_words(answer.created_at)%> ago</p>
 <p><%= (answer.votes_count or 0).to_s + " vote".pluralize(answer.votes_count) %></p>
 
-<% unless current_user_has_voted_on?(answer) %>
+<% if current_user && !current_user_has_voted_on?(answer) %>
 	<%= link_to 'Vote', vote_question_answer_path(answer.question, answer), method: :patch %>
 <% end -%>
 
