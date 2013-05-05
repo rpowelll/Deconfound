@@ -23,7 +23,14 @@ module Votable
 		# Recalculate the score of every single votable, this could be made
 		# _a lot_ more efficient
 		def recalculate_all_scores!
-			self.all.each do |votable|
+			self.find_each do |votable|
+				votable.calculate_score!
+			end
+		end
+
+		# Recalculate only the scores of the top 50 questions and answers
+		def recalculate_popular_scores!
+			self.order('score DESC').limit(50).each do |votable|
 				votable.calculate_score!
 			end
 		end
