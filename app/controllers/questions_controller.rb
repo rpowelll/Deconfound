@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    Question.recalculate_popular_scores!
     @questions = Question.order('score DESC')
   end
 
@@ -74,7 +75,6 @@ class QuestionsController < ApplicationController
     @vote.user = current_user
 
     if @vote.save
-      @question.calculate_score!
       redirect_to @question, notice: "Thanks for voting!"
     else
       redirect_to @question, alert: "You've already voted for that, but thanks for your enthusiasm!"

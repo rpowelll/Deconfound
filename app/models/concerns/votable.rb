@@ -3,10 +3,6 @@ module Votable
 
 	included do
 		has_many :votes, as: :votable
-
-		before_save do
-			self.calculate_score
-		end
 	end
 
 	# Calculate the score for an individual votable
