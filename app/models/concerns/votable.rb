@@ -3,13 +3,18 @@ module Votable
 
 	included do
 		has_many :votes, as: :votable
+
+		before_save do
+			self.calculate_score
+		end
 	end
 
 	# Calculate the score for an individual votable
 	def calculate_score
-		self.votes_count ||= 0
-		time_elapsed = (Time.now - self.created_at) / (60 * 60)
-		self.score = (self.votes_count / time_elapsed ** 1.8).real
+		time_elapsed = self.created_at ? (Time.now - self.created_at) / (60 * 60) : 0.001
+		votes = self.votes_count || 1
+
+		self.score = (votes / time_elapsed ** 1.8).real
 	end
 
 	# Calculate the score for an individual votable and update its database
