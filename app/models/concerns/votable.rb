@@ -15,6 +15,7 @@ module Votable
 		votes = self.votes_count || 1
 
 		self.score = (votes / time_elapsed ** 1.8).real
+		self.dead = true if self.score < 1
 	end
 
 	# Calculate the score for an individual votable and update its database
@@ -28,14 +29,14 @@ module Votable
 		# Recalculate the score of every single votable, this could be made
 		# _a lot_ more efficient
 		def recalculate_all_scores!
-			self.find_each do |votable|
+			self.where(dead: false).find_each do |votable|
 				votable.calculate_score!
 			end
 		end
 
 		# Recalculate only the scores of the top 50 questions and answers
 		def recalculate_popular_scores!
-			self.order('score DESC').limit(50).each do |votable|
+			self.where(dead: false).order('score DESC').limit(50).each do |votable|
 				votable.calculate_score!
 			end
 		end
